@@ -22,7 +22,7 @@ const  Navbar =()=> {
           >
             <span className="sr-only">Menu</span>
             <svg
-              className="h-6 w-6"
+              className="h-6 w-6 text-white"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -63,8 +63,12 @@ const  Navbar =()=> {
           </li>
         </ul>
         <div className="hidden items-center gap-4 md:flex">
-          <Link href="#">Login</Link>
-          <Button>Sign Up</Button>
+          <Link href="/login"  className= "no-underline ">
+           <Button className="border border-[#4f46e5] bg-transparent shadow-none text-white px-4 py-2 rounded-md hover:bg-[#4338ca] ">Login</Button>
+          </Link>
+          <Link href="/register" className= "no-underline ">
+            <Button className="bg-[#4f46e5] text-white px-4 py-2 rounded-md hover:bg-[#4338ca] ">Sign Up</Button>
+          </Link>
         </div>
       </header>
       {isMenuOpen && (
