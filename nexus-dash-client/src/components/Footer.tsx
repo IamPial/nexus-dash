@@ -129,7 +129,7 @@ const Footer = () => {
                 placeholder="Your email address"
                 className={inputStyle}
               />
-              <Button className="bg-[#4f46e5] hover:bg-[#5b3ed4] text-white font-semibold rounded-lg px-5 h-11 transition-colors shadow-md">
+              <Button className="bg-[#4f46e5] hover:bg-[#4338ca] text-white font-semibold rounded-lg px-5 h-11 transition-colors shadow-md">
                 Subscribe
               </Button>
             </div>
