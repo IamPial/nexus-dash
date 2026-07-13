@@ -1,7 +1,11 @@
-export default function Home() {
+import Banner from "@/components/homepage/Banner";
+
+const Home: React.FC = () => {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      hello
-    </div>
+    <main >
+      <Banner />
+    </main>
   );
-}
+};
+
+export default Home;
