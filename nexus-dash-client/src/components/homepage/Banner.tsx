@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@heroui/react';
-import { FiChevronRight, FiChevronLeft, FiMousePointer, FiChevronsRight } from 'react-icons/fi';
+import { FiChevronRight, FiChevronLeft, FiChevronsRight } from 'react-icons/fi';
 import Link from "next/link";
 import bannerFirstImg from "@/assets/banner1.jpg";
 import bannerSecondImg from "@/assets/banner2.jpg";
