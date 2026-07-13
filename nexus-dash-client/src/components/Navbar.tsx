@@ -10,7 +10,7 @@ const  Navbar =()=> {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
   return (
-    <div className="sticky top-0 z-40 w-full border-b  bg-[#0f172a]    border-white/10  backdrop-blur-xl ">
+    <div className="sticky top-0 z-40 w-full border-b bg-[#0f172a] border-white/10  backdrop-blur-xl">
     <nav className="container mx-auto px-4 md:px-0 relative" >
       <header className="flex h-16 items-center justify-between">
         <div className="flex items-center gap-4">
