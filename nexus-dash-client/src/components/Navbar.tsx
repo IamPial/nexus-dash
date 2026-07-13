@@ -51,15 +51,18 @@ const  Navbar =()=> {
         </div>
         <ul className="hidden items-center gap-4 md:flex">
           <li>
-            <Link href="#">Features</Link>
+            <Link href="/" className="font-medium text-white">Home</Link>
           </li>
           <li>
-            <Link href="#" className="font-medium text-white" aria-current="page">
-              Dashboard
+            <Link href="/explore" className="font-medium text-white" aria-current="page">
+              Explore
             </Link>
           </li>
           <li>
-            <Link href="#" className="font-medium text-white">Pricing</Link>
+            <Link href="/about" className="font-medium text-white">About</Link>
+          </li>
+          <li>
+            <Link href="/contact" className="font-medium text-white">Contact</Link>
           </li>
         </ul>
         <div className="hidden items-center gap-4 md:flex">
@@ -75,25 +78,25 @@ const  Navbar =()=> {
         <div className="border-t border-separator md:hidden">
           <ul className="flex flex-col gap-2 p-4">
             <li>
-              <Link href="#" className="block py-2">
-                Features
+              <Link href="/" className="text-white block py-2">
+                Home
               </Link>
             </li>
             <li>
-              <Link href="#" className="block py-2 font-medium text-accent">
-                Dashboard
+              <Link href="/explore" className="block py-2 font-medium text-white">
+                Explore
               </Link>
             </li>
             <li>
-              <Link href="#" className="block py-2">
-                Pricing
+              <Link href="/about" className="block py-2 text-white">
+                About
               </Link>
             </li>
             <li className="mt-4 flex flex-col gap-2 border-t border-separator pt-4">
-              <Link href="#" className="block py-2">
+              <Link href="/login"  className="w-full text-center no-underline block py-2 border border-[#4f46e5] bg-transparent shadow-none text-white px-4 rounded-md hover:bg-[#4338ca] ">
                 Login
               </Link>
-              <Button className="w-full">Sign Up</Button>
+              <Button className="w-full bg-[#4f46e5] text-white px-4 py-2 rounded-md hover:bg-[#4338ca] ">Sign Up</Button>
             </li>
           </ul>
         </div>
