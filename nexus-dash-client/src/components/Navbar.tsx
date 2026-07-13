@@ -9,7 +9,6 @@ const  Navbar =()=> {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
   return (
-
     <div className="sticky top-0 z-40 w-full border-b  bg-[#0f172a]    border-white/10  backdrop-blur-xl ">
     <nav className="container mx-auto px-4 md:px-0 relative" >
       <header className="flex h-16 items-center justify-between">
@@ -65,7 +64,7 @@ const  Navbar =()=> {
             <Link href="/contact" className="font-medium text-white">Contact</Link>
           </li>
         </ul>
-        <div className="hidden items-center gap-4 md:flex">
+        <div className=" flex items-center gap-4 ">
           <Link href="/login"  className= "no-underline ">
            <Button className="border border-[#4f46e5] bg-transparent shadow-none text-white px-4 py-2 rounded-md hover:bg-[#4338ca] ">Login</Button>
           </Link>
@@ -75,7 +74,7 @@ const  Navbar =()=> {
         </div>
       </header>
       {isMenuOpen && (
-        <div className="border-t border-separator md:hidden">
+        <div  className="w-50 absolute top-[calc(100%+8px)] left-4 right-4 z-50 lg:hidden rounded-xl border border-white/10 bg-[#0f172a] backdrop-blur-md p-2 shadow-2xl transition-all duration-200 ease-out">
           <ul className="flex flex-col gap-2 p-4">
             <li>
               <Link href="/" className="text-white block py-2">
@@ -92,17 +91,16 @@ const  Navbar =()=> {
                 About
               </Link>
             </li>
-            <li className="mt-4 flex flex-col gap-2 border-t border-separator pt-4">
-              <Link href="/login"  className="w-full text-center no-underline block py-2 border border-[#4f46e5] bg-transparent shadow-none text-white px-4 rounded-md hover:bg-[#4338ca] ">
-                Login
+            <li>
+              <Link href="/contact" className="block py-2 text-white">
+                Contact
               </Link>
-              <Button className="w-full bg-[#4f46e5] text-white px-4 py-2 rounded-md hover:bg-[#4338ca] ">Sign Up</Button>
             </li>
           </ul>
         </div>
       )}
     </nav>
-      </div>
+  </div>
   )
 }
 export default Navbar
