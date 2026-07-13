@@ -21,31 +21,39 @@ import 'swiper/css/effect-fade';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import Image from 'next/image';
+import { StaticImageData } from "next/image";
 
-const slides = [
+interface SlideItem {
+  id: number;
+  title: string;
+  subtitle: string;
+  image: StaticImageData;
+}
+
+const slides: SlideItem[] = [
   {
     id: 1,
     title: "Chart Your Next Adventure",
     subtitle: "Map out your global destinations and take off toward seamless, borderless travel experiences.",
-    image: bannerFirstImg, 
+    image: bannerFirstImg,
   },
   {
     id: 2,
     title: "Pack Light, Explore Deep",
     subtitle: "Gear up with the essentials and document your journey across breathtaking landscapes.",
-    image: bannerSecondImg, 
+    image: bannerSecondImg,
   },
   {
     id: 3,
     title: "Discover Historic Wonders",
     subtitle: "Immerse yourself in timeless architecture and culturally enriched waterfront cities.",
-    image: bannerThirdImg, 
+    image: bannerThirdImg,
   },
   {
     id: 4,
     title: "Minimalist & Smart Escapes",
     subtitle: "Leave the heavy lifting to us. Enjoy stress-free bookings tailored for the modern wanderer.",
-    image: bannerFourthImg, 
+    image: bannerFourthImg,
   }
 ];
 
