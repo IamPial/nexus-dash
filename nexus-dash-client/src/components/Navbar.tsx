@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Link, Button } from "@heroui/react";
 import logo from "@/assets/nexus.png"
 import Image from "next/image";
+import NavLink from "./NavLink";
 
 const  Navbar =()=> {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
@@ -50,18 +51,16 @@ const  Navbar =()=> {
         </div>
         <ul className="hidden items-center gap-4 md:flex">
           <li>
-            <Link href="/" className="font-medium text-white">Home</Link>
+            <NavLink href="/" className="font-medium text-white">Home</NavLink>
           </li>
           <li>
-            <Link href="/explore" className="font-medium text-white" aria-current="page">
-              Explore
-            </Link>
+            <NavLink href="/explore" className="font-medium text-white">Explore</NavLink>
           </li>
           <li>
-            <Link href="/about" className="font-medium text-white">About</Link>
+            <NavLink href="/about" className="font-medium text-white">About</NavLink>
           </li>
           <li>
-            <Link href="/contact" className="font-medium text-white">Contact</Link>
+            <NavLink href="/contact" className="font-medium text-white">Contact</NavLink>
           </li>
         </ul>
         <div className=" flex items-center gap-4 ">
@@ -77,24 +76,16 @@ const  Navbar =()=> {
         <div  className="w-50 absolute top-[calc(100%+8px)] left-4 right-4 z-50 lg:hidden rounded-xl border border-white/10 bg-[#0f172a] backdrop-blur-md p-2 shadow-2xl transition-all duration-200 ease-out">
           <ul className="flex flex-col gap-2 p-4">
             <li>
-              <Link href="/" className="text-white block py-2">
-                Home
-              </Link>
+              <NavLink href="/" onClick={() => setIsMenuOpen(false)} className="font-medium text-white">Home</NavLink>
             </li>
             <li>
-              <Link href="/explore" className="block py-2 font-medium text-white">
-                Explore
-              </Link>
+              <NavLink href="/explore" onClick={() => setIsMenuOpen(false)} className="font-medium text-white">Explore</NavLink>
             </li>
             <li>
-              <Link href="/about" className="block py-2 text-white">
-                About
-              </Link>
+              <NavLink href="/about"  onClick={() => setIsMenuOpen(false)} className="font-medium text-white">About</NavLink>
             </li>
             <li>
-              <Link href="/contact" className="block py-2 text-white">
-                Contact
-              </Link>
+              <NavLink  href="/contact"  onClick={() => setIsMenuOpen(false)} className="font-medium text-white">Contact</NavLink>
             </li>
           </ul>
         </div>
