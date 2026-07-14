@@ -4,19 +4,51 @@ import React, { useState, FormEvent } from 'react';
 import Link from 'next/link';
 import { Form, TextField, Input, Button, FieldError,  Label } from '@heroui/react';
 import { FiMail, FiLock, FiEye, FiEyeOff } from 'react-icons/fi';
+import { authClient } from '@/lib/auth-client';
+import { toast } from 'sonner';
+import { useRouter } from 'next/navigation';
 
 
+type SignInForm = {
+  email: string;
+  password:string
+}
 
 const  LoginPage=()=> {
   const [isVisible, setIsVisible] = useState<boolean>(false);
-
   const toggleVisibility = (): void => setIsVisible((prev) => !prev);
+  const router = useRouter();
 
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const user = Object.fromEntries(formData.entries()) as SignInForm;
+    const { data,error } = await authClient.signIn.email({ 
+        email:user.email, 
+        password:user.password,
+     })
+      if (data) {
+      toast.success("Login successful!", {
+        style: {
+          color: "#00c950",
+        },
+      });
+      router.push("/");
+      router.refresh();
+    }
 
-  };
+    if(error){
+      toast.error("Login failed! Please check your credentials.", {
+        style: {
+          color: "#ff4d4f",
+        },
+      });
+    }
+   
+}
+
+  
 
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8 relative overflow-hidden px-2">
