@@ -120,7 +120,7 @@ const Footer = () => {
               Newsletter
             </h2>
             <p className="text-xs text-slate-400 leading-relaxed">
-              Subscribe to get latest updates and room availability
+              Subscribe to get latest updates and Booking availability
               notifications.
             </p>
             <div className="flex flex-col sm:flex-row gap-2 w-full items-stretch">
