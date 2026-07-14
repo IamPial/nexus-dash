@@ -1,13 +1,28 @@
 'use client'
 
 import { useState } from "react";
-import { Link, Button } from "@heroui/react";
+import { Link, Button, Avatar, Dropdown } from "@heroui/react";
 import logo from "@/assets/nexus.png"
 import Image from "next/image";
 import NavLink from "./NavLink";
+import { authClient } from "@/lib/auth-client";
+import { IoIosLogOut } from "react-icons/io";
+import { toast } from "sonner";
 
 const  Navbar =()=> {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const {data: session} = authClient.useSession() 
+  const user = session?.user;
+
+  const handleSignOut = async () => {
+    await authClient.signOut();
+     toast.success("Logged out successfully!", {
+             style: {
+               color: "#00c950",
+             },
+           })
+     }
+
 
   return (
     <div className="sticky top-0 z-40 w-full border-b bg-[#0f172a] border-white/10  backdrop-blur-xl">
@@ -45,7 +60,7 @@ const  Navbar =()=> {
             </svg>
           </button>
           <div className="flex items-center gap-3">
-            <Image src={logo} alt="Logo" width={40} height={40}/>
+            <Image src={logo} alt="Logo" width={40} height={40} className="hidden sm:flex" />
             <p className="font-bold text-xl text-white">Nexus<span className="text-green-300 ">Dash</span></p>
           </div>
         </div>
@@ -63,13 +78,76 @@ const  Navbar =()=> {
             <NavLink href="/contact" className="font-medium text-white">Contact</NavLink>
           </li>
         </ul>
+
+
+
         <div className=" flex items-center gap-4 ">
+         {user ? (  <Dropdown>
+                <Button
+                  aria-label="Menu"
+                  className="py-6 bg-[#131129]/80 backdrop-blur-lg text-white"
+                  variant="secondary"
+                >
+                  <Avatar>
+                    <Avatar.Image
+                      referrerPolicy="no-referrer"
+                      alt={user?.name}
+                      src={user?.image ?? undefined}
+                    />
+                    <Avatar.Fallback>{user?.name?.charAt(0)}</Avatar.Fallback>
+                  </Avatar>{" "}
+                  <span className="text-white">
+                    Hi, {user?.name?.split(" ")[0]} !
+                  </span>
+                </Button>
+
+                <Dropdown.Popover>
+                  <Dropdown.Menu
+                    className="bg-[#0f172a] text-white border border-white/10"
+                    onAction={(key) => console.log(`Selected: ${String(key)}`)}
+                  >
+                    <Dropdown.Item
+                      id="new-file"
+                      textValue="New file"
+                      className="hover:bg-white/5"
+                    >
+                      <div>
+                        <h3 className="font-semibold">{user?.name}</h3>
+                        <small className="text-slate-400">{user?.email}</small>
+                      </div>
+                    </Dropdown.Item>
+                    <Dropdown.Item className="hover:bg-white/5">
+                      <NavLink
+                        href={`/dashboard`}
+                        className="font-medium"
+                        aria-current="page"
+                      >
+                        Dashboard
+                      </NavLink>
+                    </Dropdown.Item>
+
+                    <Dropdown.Item className="hover:bg-white/5 p-1">
+                      <Button
+                        onClick={handleSignOut}
+                        className="w-full bg-[#da3214] hover:bg-[#c1290f] text-white font-semibold transition-colors"
+                      >
+                        <IoIosLogOut /> Log Out
+                      </Button>
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown.Popover>
+              </Dropdown> ) :  ( <>
           <Link href="/login"  className= "no-underline ">
            <Button className="border border-[#4f46e5] bg-transparent shadow-none text-white px-4 py-2 rounded-md hover:bg-[#4338ca] ">Login</Button>
           </Link>
           <Link href="/register" className= "no-underline ">
             <Button className="bg-[#4f46e5] text-white px-4 py-2 rounded-md hover:bg-[#4338ca] ">Sign Up</Button>
           </Link>
+      </>
+    )}
+
+
+         
         </div>
       </header>
       {isMenuOpen && (
