@@ -76,7 +76,7 @@ const Footer = () => {
               Social Links
             </h2>
             <div className="flex flex-wrap gap-3 text-white">
-              <Link href="#" className="cursor-pointer">
+              <Link href="https://facebook.com" className="cursor-pointer">
                 <Button
                   isIconOnly
                   className="bg-[#131129] border border-white/10 hover:border-[#4f46e5] hover:bg-[#4f46e5] text-white rounded-lg transition-all min-w-10 h-10"
@@ -84,7 +84,7 @@ const Footer = () => {
                   <LuFacebook className="text-lg" />
                 </Button>
               </Link>
-              <Link href="#" className="cursor-pointer">
+              <Link href="https://twitter.com" className="cursor-pointer">
                 <Button
                   isIconOnly
                   className="bg-[#131129] border border-white/10 hover:border-[#4f46e5] hover:bg-[#4f46e5] text-white rounded-lg transition-all min-w-10 h-10"
@@ -92,7 +92,7 @@ const Footer = () => {
                   <FaXTwitter className="text-lg" />
                 </Button>
               </Link>
-              <Link href="#" className="cursor-pointer">
+              <Link href="https://linkedin.com" className="cursor-pointer">
                 <Button
                   isIconOnly
                   className="bg-[#131129] border border-white/10 hover:border-[#4f46e5] hover:bg-[#4f46e5] text-white rounded-lg transition-all min-w-10 h-10"
@@ -100,7 +100,7 @@ const Footer = () => {
                   <SlSocialLinkedin className="text-lg" />
                 </Button>
               </Link>
-              <Link href="#" className="cursor-pointer">
+              <Link href="https://instagram.com" className="cursor-pointer">
                 <Button
                   isIconOnly
                   className="bg-[#131129] border border-white/10 hover:border-[#4f46e5] hover:bg-[#4f46e5] text-white rounded-lg transition-all min-w-10 h-10"
