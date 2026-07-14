@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, FormEvent, ChangeEvent } from "react";
+import React, { useState, FormEvent} from "react";
 import {
   Button,
   Description,
@@ -17,26 +17,59 @@ import { FiUser, FiImage, FiMail, FiLock, FiEye, FiEyeOff } from "react-icons/fi
 import Link from "next/link";
 import TravelImg from "@/assets/travel.png";
 import Image from "next/image";
+import { authClient } from "@/lib/auth-client";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
-interface SignUpInputs {
+
+type SignUpForm = {
   name: string;
   image: string;
   email: string;
   password: string;
   confirmPassword: string;
-}
+};
+
+
 
 const SignUpPage = () => {
   const [showPass, setShowPass] = useState<boolean>(false);
   const [showConfirmPass, setShowConfirmPass] = useState<boolean>(false);
+  const router = useRouter();
 
-
-
- 
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
+    const user = Object.fromEntries(formData.entries()) as SignUpForm;
+  
+
+    if (user.password !== user.confirmPassword) {
+    toast.error("Passwords do not match!");
+    return;
+    }
+
+    const { data, error } = await authClient.signUp.email({
+        email: user.email, 
+        password: user.password ,
+        name: user.name,
+        image: user.image, 
+    });
+    
+
+    console.log("Sign Up Response:", { data, error });
+
+
+    if (data) {
+      await authClient.signOut();
+      toast("Registration successful!", {
+        style: {
+          color: "#00c950",
+        },
+      });
+      router.push("/login");
+      router.refresh();
+    }
    
   
   };
