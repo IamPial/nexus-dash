@@ -7,6 +7,9 @@ const db = client.db("nexus-dash-db");
 
 export const auth = betterAuth({
   database: mongodbAdapter(db, {
-    client
+    client 
   }),
+  emailAndPassword: {    
+        enabled:true
+    } 
 });
