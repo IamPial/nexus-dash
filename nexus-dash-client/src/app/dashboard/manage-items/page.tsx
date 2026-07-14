@@ -49,12 +49,12 @@ const ManageItemsPage = () => {
   const [items, setItems] = useState<Item[]>(initialItems);
   const [searchQuery, setSearchQuery] = useState("");
 
-  // সার্চ লজিক
+ 
   const filteredItems = items.filter((item) =>
     item.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  // ডিলিট হ্যান্ডলার
+  
   const handleDelete = (id: string, title: string) => {
     const confirmDelete = window.confirm(`Are you sure you want to delete "${title}"?`);
     if (confirmDelete) {
