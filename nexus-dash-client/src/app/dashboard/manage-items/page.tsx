@@ -7,6 +7,14 @@ import ItemsTable from "@/components/ItemsTable";
 import { DeleteModal } from "@/components/DeleteModal";
 
 
+export const metadata = {
+  title: "Manage Items - DashBoard",
+  description:
+    "Efficiently manage, monitor, and update your active travel destinations and packages on NexusDash—the ultimate premium travel administration platform.",
+};
+
+
+
 const ManageItemsPage = async () => {
   const filteredItems = await getDestinations();
 

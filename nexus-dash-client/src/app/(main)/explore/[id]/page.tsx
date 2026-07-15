@@ -4,6 +4,14 @@ import Link from "next/link";
 import { getExploreItemsDetails } from "@/lib/api/explore";
 import BookButton from "@/components/BookButton";
 
+
+export const metadata= {
+  title: "Destination Details",
+  description:
+    "NexusDash is a cutting-edge digital platform for managing premium travel packages, exploring global destinations, and streamlining tour administration.",
+};
+
+
 interface PageProps {
   params: Promise<{ id: string }>;
 }

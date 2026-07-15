@@ -8,6 +8,12 @@ import {
 import TravelCard from "@/components/TravelCard";
 
 
+export const metadata= {
+  title: "Explore Destination",
+  description:
+    "NexusDash is a cutting-edge digital platform for managing premium travel packages, exploring global destinations, and streamlining tour administration.",
+};
+
 
 const ExplorePage = async () => {
  const exploreData = await getAllExploreItems()
