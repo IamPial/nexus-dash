@@ -73,6 +73,19 @@ const SignUpPage = () => {
    
   
   };
+   const handleGoogleSignIn = async () => {
+   await authClient.signIn.social({
+    provider: "google",
+    
+  });
+  toast.success("Sign In successful with google!", {
+        style: {
+          color: "#00c950",
+        },
+      });
+      router.push("/");
+      router.refresh();
+};
 
 
   const inputStyle = `rounded-xl border border-slate-200 bg-white text-slate-900 w-full shadow-none mt-1 focus:border-[#4f46e5] focus:ring-0 focus:outline-none transition-colors autofill:shadow-[0_0_0_30px_#ffffff_inset] autofill:text-slate-900 [-webkit-text-fill-color:slate-900]`;
@@ -233,6 +246,7 @@ const SignUpPage = () => {
 
             <Button
               type="button"
+              onClick={handleGoogleSignIn}
               className="w-full py-6 border border-slate-300 bg-white text-slate-700 font-bold rounded-xl   flex items-center justify-center gap-2 "
             >
               <FcGoogle className="text-xl" />

@@ -48,6 +48,20 @@ const  LoginPage=()=> {
    
 }
 
+  const handleGoogleSignIn = async () => {
+   await authClient.signIn.social({
+    provider: "google",
+    
+  });
+  toast.success("Sign In successful with google!", {
+        style: {
+          color: "#00c950",
+        },
+      });
+      router.push("/");
+      router.refresh();
+};
+
   
 
   return (
@@ -133,6 +147,7 @@ const  LoginPage=()=> {
 
             <Button
               type="button"
+              onClick={handleGoogleSignIn}
               className="w-full py-6 border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 font-bold rounded-xl transition duration-200 flex items-center justify-center gap-2.5"
             >
               
