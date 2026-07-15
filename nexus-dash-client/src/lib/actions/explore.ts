@@ -1,5 +1,7 @@
 'use server'
 
+import { getTokenServer } from "../getToken";
+
 const baseURl = process.env.NEXT_PUBLIC_API_URL
 
 interface ExploreItems {
@@ -13,10 +15,12 @@ interface ExploreItems {
 }
 
 export const createExploreItems = async(exploreData:ExploreItems)=>{
+    const token = await getTokenServer()
     const res = await fetch(`${baseURl}/api/explore`,{
         method:"POST",
         headers:{
-            "content-type":"application/json"
+            "content-type":"application/json",
+            authorization: `Bearer ${token}`
         },
         body:JSON.stringify(exploreData)
     })
