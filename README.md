@@ -263,7 +263,7 @@ CLIENT_URL=
 
 ### Home Page
 
-<img src="./src/assets/home.png">
+![Home](./src/assets/home.png)
 
 ---
 
