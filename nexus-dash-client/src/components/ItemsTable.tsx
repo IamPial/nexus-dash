@@ -6,6 +6,7 @@ import { FiEye } from "react-icons/fi";
 import Link from "next/link";
 import Image from "next/image";
 import type { ExploreItem } from "@/lib/api/explore";
+import { DeleteModal } from "./DeleteModal";
 
 
 const ItemsTable = ({ items }: { items: ExploreItem[] }) => {
@@ -65,6 +66,7 @@ const ItemsTable = ({ items }: { items: ExploreItem[] }) => {
                           <FiEye size={16} />
                         </Button>
                       </Link>
+                      <DeleteModal destinations={item}/>
                     </div>
                   </Table.Cell>
                 </Table.Row>
