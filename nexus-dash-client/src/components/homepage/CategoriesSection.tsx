@@ -1,13 +1,16 @@
 import React from 'react';
 import Link from "next/link";
 import { FiChevronRight, FiCompass, FiHeart, FiBriefcase, FiShield } from 'react-icons/fi';
+import { GiAncientRuins, GiPalmTree } from 'react-icons/gi';
+import { FaHiking } from 'react-icons/fa';
+import { FaCity } from 'react-icons/fa6';
 
 const CategoriesSection: React.FC = () => {
   const categoryItems = [
-    { title: "Over water Villas", count: "142 Properties", icon: <FiHeart className="text-rose-500" /> },
-    { title: "Alpine Treks", count: "89 Experiences", icon: <FiCompass className="text-emerald-500" /> },
-    { title: "Urban Penthouses", count: "210 Rentals", icon: <FiBriefcase className="text-amber-500" /> },
-    { title: "Private Islands", count: "34 Locations", icon: <FiShield className="text-indigo-500" /> }
+    { title: "City & Romance", count: "142 Properties", icon:  <FaCity  className="text-rose-500"/> },
+    { title: "Culture & Heritage", count: "89 Experiences", icon: <GiAncientRuins className="text-emerald-500" /> },
+    { title: "Adventure", count: "210 Rentals", icon:  <FaHiking className="text-amber-500" /> },
+    { title: "Beach & Resort", count: "34 Locations", icon:   <GiPalmTree className="text-indigo-500" />}
   ];
 
   return (
