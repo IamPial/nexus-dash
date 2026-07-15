@@ -1,14 +1,29 @@
 import 'dotenv/config';
-import express, { type Express, type Request, type Response } from 'express';
-import { MongoClient, ServerApiVersion } from 'mongodb';
+import express, {  type Express, type Request, type Response } from 'express';
+import cors from 'cors';
+import { MongoClient, ObjectId, ServerApiVersion } from 'mongodb';
 
 const app: Express = express();
 const port = process.env.PORT || 5000;
+
+
+app.use(express.json())
+app.use(cors())
 
 app.get('/', (req: Request, res: Response) => {
   res.send('Hello World!');
 });
 
+
+interface ExploreItems {
+  title: string;
+  description: string
+  price: string,
+  date:string,
+  image?: string;
+  location: string,
+  category: string
+}
 
 
 
@@ -34,10 +49,17 @@ async function run() {
 
 
     //Explore related API
-    app.get('/explore', async (req: Request, res: Response) => {
+    app.get('/api/explore', async (req: Request, res: Response) => {
         const result = await exploreCollection.find().toArray();
         res.json(result); 
     });
+
+    app.post('/api/explore', async(req:Request<{},{} ,ExploreItems>, res:Response)=>{
+      const addItems = req.body
+      const result = await exploreCollection.insertOne(addItems)
+      res.json(result)
+    })
+
 
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
