@@ -7,7 +7,7 @@ export async function proxy(request: NextRequest) {
  const user = await getUserSession();
 
 
-  if (user) {
+  if (!user) {
     return NextResponse.redirect(new URL("/", request.url));
   }
 
@@ -15,5 +15,5 @@ export async function proxy(request: NextRequest) {
 }
  
 export const config = {
-  matcher: ["/add-items"]
+  matcher: "/add-items"
 }
