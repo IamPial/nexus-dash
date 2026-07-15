@@ -71,9 +71,9 @@ const  Navbar =()=> {
           <li>
             <NavLink href="/explore" className="font-medium text-white">Explore</NavLink>
           </li>
-          <li>
+          {user && <li>
             <NavLink href="/add-items" className="font-medium text-white">Add Items</NavLink>
-          </li>
+          </li>}
           <li>
             <NavLink href="/about" className="font-medium text-white">About</NavLink>
           </li>
@@ -162,9 +162,9 @@ const  Navbar =()=> {
             <li>
               <NavLink href="/explore" onClick={() => setIsMenuOpen(false)} className="font-medium text-white">Explore</NavLink>
             </li>
-            <li>
+           {user &&  <li>
               <NavLink href="/add-items"  onClick={() => setIsMenuOpen(false)} className="font-medium text-white">Add Items</NavLink>
-            </li>
+            </li>}
             <li>
               <NavLink  href="/contact"  onClick={() => setIsMenuOpen(false)} className="font-medium text-white">Contact</NavLink>
             </li>
