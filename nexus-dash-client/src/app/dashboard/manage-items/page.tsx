@@ -69,7 +69,7 @@ const ManageItemsPage = () => {
       transition={{ duration: 0.4 }}
       className="p-6 bg-slate-50 min-h-screen space-y-6 text-slate-950"
     >
-      {/* হেডার সেকশন */}
+
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
           <h1 className="text-2xl font-bold tracking-tight text-slate-900">Manage Items</h1>
