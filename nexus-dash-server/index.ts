@@ -103,7 +103,7 @@ async function run() {
       const result = await exploreCollection.find({ userId }).toArray();
       res.send(result);
     });
-
+ 
     app.post('/api/explore',verifyToken, async(req:Request<{},{} ,ExploreItems>, res:Response)=>{
        const userId = req.user?.id;
       const addItems = { ...req.body, userId };
@@ -119,6 +119,14 @@ async function run() {
       res.send(result)
     })
 
+
+    app.delete("/api/explore/:id", verifyToken, async (req:Request<{id:string}>, res:Response) => {
+      const id = req.params.id;
+      const result = await exploreCollection.deleteOne({
+        _id: new ObjectId(id),
+      });
+      res.send(result);
+    })
      
 
 
