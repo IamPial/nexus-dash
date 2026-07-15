@@ -17,8 +17,18 @@ export interface ExploreItem {
 
 
 //get all explore items
-export const getAllExploreItems = async (): Promise<ExploreItem[]> => {
-  const res = await fetch(`${baseURl}/api/explore`);
+//get all explore items
+export const getAllExploreItems = async (options?: { limit?: number }): Promise<ExploreItem[]> => {
+  const query = options?.limit ? `?limit=${options.limit}` : "";
+  const res = await fetch(`${baseURl}/api/explore${query}`);
   const data = await res.json();
   return data;
 };
+
+
+//get explore items details
+export const getExploreItemsDetails = async(id: string): Promise<ExploreItem> =>{
+  const res = await fetch(`${baseURl}/api/explore/${id}`)
+  const data = await res.json()
+  return data
+}
