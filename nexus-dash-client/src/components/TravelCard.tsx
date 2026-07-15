@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { FiMapPin, FiCalendar } from "react-icons/fi";
 import Image from "next/image";
 import { ExploreItem } from "@/lib/api/explore";
+import Link from "next/link";
 
 
 interface TravelCardProps {
@@ -63,12 +64,13 @@ const TravelCard = ({  travelData }: TravelCardProps) => {
             <span className="text-[10px] text-slate-400 uppercase tracking-wide block">Price</span>
             <span className="text-lg font-black text-slate-900">${travelData.price}</span>
           </div>
+          <Link href={`/explore/${travelData._id}`}>
           <Button
             size="sm"
             className="bg-[#4f46e5] hover:bg-[#4338ca] text-white text-xs font-bold rounded-xl px-4 py-2 transition-colors cursor-pointer shadow-sm"
           >
           View Details
-          </Button>
+          </Button></Link>
         </div>
       </div>
     </motion.div>
