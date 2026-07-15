@@ -70,7 +70,9 @@ const SignUpPage = () => {
       router.push("/login");
       router.refresh();
     }
-   
+   if (error) {
+  toast.error(error.message || "Registration failed. Please try again.");
+}
   
   };
    const handleGoogleSignIn = async () => {
