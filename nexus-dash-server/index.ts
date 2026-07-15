@@ -97,8 +97,16 @@ async function run() {
         res.json(result); 
     });
 
+
+    app.get("/api/explore/my-items", verifyToken, async (req, res) => {
+      const userId = req.user?.id;
+      const result = await exploreCollection.find({ userId }).toArray();
+      res.send(result);
+    });
+
     app.post('/api/explore',verifyToken, async(req:Request<{},{} ,ExploreItems>, res:Response)=>{
-      const addItems = req.body
+       const userId = req.user?.id;
+      const addItems = { ...req.body, userId };
       const result = await exploreCollection.insertOne(addItems)
       res.json(result)
     })
@@ -110,6 +118,8 @@ async function run() {
       })
       res.send(result)
     })
+
+     
 
 
     // Send a ping to confirm a successful connection
