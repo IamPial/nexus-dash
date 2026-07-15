@@ -47,3 +47,5 @@ export const getDestinations = async (): Promise<ExploreItem[]> => {
   const data = await res.json();
   return data;
 };
+
+
