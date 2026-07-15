@@ -263,7 +263,7 @@ CLIENT_URL=
 
 ### Home Page
 
-![Home](./src/assets/home.png)
+![Home](./nexus-dash-client/src/assets/home.png)
 
 ---
 
