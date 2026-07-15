@@ -21,6 +21,15 @@ Designed with scalability, performance, and clean UI/UX principles in mind, Nexu
 
 ---
 
+#  Screenshots
+
+### Home Page
+
+![Home](./nexus-dash-client/src/assets/home.png)
+
+---
+
+
 #  Key Features
 
 ###  Premium Travel Experiences
@@ -256,16 +265,6 @@ MONGODB_URI=
 CLIENT_URL=
 
 ```
-
----
-
-#  Screenshots
-
-### Home Page
-
-![Home](./nexus-dash-client/src/assets/home.png)
-
----
 
 #  Author
 
