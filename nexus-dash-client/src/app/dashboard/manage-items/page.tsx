@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { getDestinations, type ExploreItem } from "@/lib/api/explore";
 import ItemsTable from "@/components/ItemsTable";
+import { DeleteModal } from "@/components/DeleteModal";
 
 
 const ManageItemsPage = async () => {
@@ -27,12 +28,12 @@ const ManageItemsPage = async () => {
       <div className="bg-white border border-slate-200/60 rounded-2xl shadow-lg overflow-hidden">
         <ItemsTable items={filteredItems} />
 
-        <div className="block  p-4 space-y-4">
+        <div className=" p-4 space-y-4">
           {filteredItems.length === 0 ? (
             <div className="text-center py-8 text-sm text-[#0f172a] md:text-4xl font-bold">You haven&apos;t created any destinations!</div>
           ) : ( 
             filteredItems.map((item: ExploreItem) => (
-              <div key={item._id} className="border border-slate-100 rounded-xl p-4 flex flex-col gap-3 shadow-sm bg-white">
+              <div key={item._id} className="border border-slate-100 rounded-xl p-4 flex flex-col gap-3 shadow-sm bg-white  md:hidden">
                 <div className="flex gap-3">
                   {item.image && (
                     <div className="relative w-14 h-14 overflow-hidden rounded-xl border border-slate-200 shrink-0">
@@ -57,6 +58,7 @@ const ManageItemsPage = async () => {
                         View
                       </Button>
                     </Link>
+                    <DeleteModal destinations={item}/>
                   </div>
                 </div>
               </div>
