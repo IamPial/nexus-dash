@@ -10,9 +10,6 @@ import {
   Label,
   TextArea,
   TextField,
-  Calendar,
-  DateField,
-  DatePicker,
   Select,
   ListBox
 
@@ -21,19 +18,24 @@ import { motion } from "framer-motion";
 import { FiDollarSign, FiImage, FiMapPin } from "react-icons/fi";
 import { createExploreItems } from "@/lib/actions/explore";
 import { imgUpload } from "@/lib/imgUploader";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 interface AddItemInputs {
   title: string;
   description: string;
   price: string;
   rating: string;
-  date: string;
+  duration: string;
   image?: File;
   location: string;
   category: string;
 }
 
 const AddItemPage = () => {
+
+  const router = useRouter()
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
   e.preventDefault();
   const formData = new FormData(e.currentTarget);
@@ -55,6 +57,15 @@ const AddItemPage = () => {
   };
 
   const result = await createExploreItems(exploreData);
+  if(result){
+     toast.success("Add New Destination Successfully", {
+        style: {
+          color: "#00c950",
+        },
+      });
+      router.push("/explore")
+      router.refresh()
+  }
 
 };
 
@@ -122,60 +133,12 @@ const AddItemPage = () => {
             </TextField>
 
             {/* Date Field - Exact HeroUI Component Anatomy */}
-            <div className="w-full flex flex-col">
-              <DatePicker isRequired name="date">
-                <Label className="text-slate-700 text-xs font-bold uppercase tracking-wide mb-1 block">
-                  Relevant Date
-                </Label>
-                <DateField.Group className="flex items-center rounded-xl border border-slate-200 bg-white h-10 px-3 shadow-none mt-1 focus-within:border-[#4f46e5] transition-colors">
-                  <DateField.Input className="flex-1 flex gap-0.5 text-slate-900 text-sm">
-                    {(segment) => (
-                      <DateField.Segment
-                        segment={segment}
-                        className="px-0.5 focus:bg-[#4f46e5] focus:text-white rounded outline-none select-none data-[placeholder=true]:text-slate-400"
-                      />
-                    )}
-                  </DateField.Input>
-                  <DateField.Suffix>
-                    <DatePicker.Trigger className="text-slate-400 hover:text-slate-600 focus:outline-none p-1">
-                      <DatePicker.TriggerIndicator />
-                    </DatePicker.Trigger>
-                  </DateField.Suffix>
-                </DateField.Group>
-
-                <DatePicker.Popover className="bg-white border border-slate-200 shadow-xl rounded-2xl p-4 mt-2">
-                  <Calendar aria-label="Choose date" className="text-slate-900">
-                    <Calendar.Header className="flex items-center justify-between mb-4">
-                      <Calendar.YearPickerTrigger className="flex items-center gap-1 font-bold text-sm text-slate-800 hover:bg-slate-100 px-2 py-1 rounded-lg">
-                        <Calendar.YearPickerTriggerHeading />
-                        <Calendar.YearPickerTriggerIndicator />
-                      </Calendar.YearPickerTrigger>
-                      <div className="flex gap-1">
-                        <Calendar.NavButton slot="previous" className="p-1.5 hover:bg-slate-100 rounded-lg text-slate-600" />
-                        <Calendar.NavButton slot="next" className="p-1.5 hover:bg-slate-100 rounded-lg text-slate-600" />
-                      </div>
-                    </Calendar.Header>
-                    <Calendar.Grid className="w-full border-collapse">
-                      <Calendar.GridHeader className="text-slate-400 text-xs font-semibold">
-                        {(day) => (
-                          <Calendar.HeaderCell className="pb-2 text-center w-8">
-                            {day}
-                          </Calendar.HeaderCell>
-                        )}
-                      </Calendar.GridHeader>
-                      <Calendar.GridBody>
-                        {(date) => (
-                          <Calendar.Cell
-                            date={date}
-                            className="w-8 h-8 text-sm text-center align-middle hover:bg-slate-100 rounded-lg cursor-pointer data-[selected=true]:bg-[#4f46e5] data-[selected=true]:text-white outline-none"
-                          />
-                        )}
-                      </Calendar.GridBody>
-                    </Calendar.Grid>
-                  </Calendar>
-                </DatePicker.Popover>
-              </DatePicker>
-            </div>
+             {/* Duration */}
+          <TextField name="duration" isRequired>
+            <Label>Duration</Label>
+            <Input placeholder="7 Days / 6 Nights" className="rounded-2xl" />
+            <FieldError />
+          </TextField>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full items-center">
@@ -207,31 +170,31 @@ const AddItemPage = () => {
               <Select.Popover className="bg-white border border-slate-200 shadow-xl rounded-2xl p-2 mt-2 w-[--trigger-width]">
                 <ListBox>
                   <ListBox.Item
-                    id="beach"
+                    id="Beach"
                     textValue="Beach"
                     className="flex items-center justify-between px-3 py-2 rounded-lg text-sm text-slate-800 hover:bg-slate-100 cursor-pointer outline-none"
                   >
-                    <Label>Beach</Label>
+                    <Label>Beach & Resort</Label>
                     <ListBox.ItemIndicator className="text-[#4f46e5]" />
                   </ListBox.Item>
                   <ListBox.Item
-                    id="mountain"
-                    textValue="Mountain"
+                    id="City"
+                    textValue="City & Romance"
                     className="flex items-center justify-between px-3 py-2 rounded-lg text-sm text-slate-800 hover:bg-slate-100 cursor-pointer outline-none"
                   >
-                    <Label>Mountain</Label>
+                    <Label>City & Romance</Label>
                     <ListBox.ItemIndicator className="text-[#4f46e5]" />
                   </ListBox.Item>
                   <ListBox.Item
-                    id="city"
-                    textValue="City"
+                    id="Culture"
+                    textValue="Culture"
                     className="flex items-center justify-between px-3 py-2 rounded-lg text-sm text-slate-800 hover:bg-slate-100 cursor-pointer outline-none"
                   >
-                    <Label>City</Label>
+                    <Label>Culture & Heritage</Label>
                     <ListBox.ItemIndicator className="text-[#4f46e5]" />
                   </ListBox.Item>
                   <ListBox.Item
-                    id="adventure"
+                    id="Adventure"
                     textValue="Adventure"
                     className="flex items-center justify-between px-3 py-2 rounded-lg text-sm text-slate-800 hover:bg-slate-100 cursor-pointer outline-none"
                   >
