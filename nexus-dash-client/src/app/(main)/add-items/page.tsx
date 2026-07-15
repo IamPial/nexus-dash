@@ -170,15 +170,15 @@ const AddItemPage = () => {
               <Select.Popover className="bg-white border border-slate-200 shadow-xl rounded-2xl p-2 mt-2 w-[--trigger-width]">
                 <ListBox>
                   <ListBox.Item
-                    id="Beach"
-                    textValue="Beach"
+                    id="Beach & Resort"
+                    textValue="Beach & Resort"
                     className="flex items-center justify-between px-3 py-2 rounded-lg text-sm text-slate-800 hover:bg-slate-100 cursor-pointer outline-none"
                   >
                     <Label>Beach & Resort</Label>
                     <ListBox.ItemIndicator className="text-[#4f46e5]" />
                   </ListBox.Item>
                   <ListBox.Item
-                    id="City"
+                    id="City & Romance"
                     textValue="City & Romance"
                     className="flex items-center justify-between px-3 py-2 rounded-lg text-sm text-slate-800 hover:bg-slate-100 cursor-pointer outline-none"
                   >
@@ -186,8 +186,8 @@ const AddItemPage = () => {
                     <ListBox.ItemIndicator className="text-[#4f46e5]" />
                   </ListBox.Item>
                   <ListBox.Item
-                    id="Culture"
-                    textValue="Culture"
+                    id="Culture & Heritage"
+                    textValue="Culture & Heritage"
                     className="flex items-center justify-between px-3 py-2 rounded-lg text-sm text-slate-800 hover:bg-slate-100 cursor-pointer outline-none"
                   >
                     <Label>Culture & Heritage</Label>

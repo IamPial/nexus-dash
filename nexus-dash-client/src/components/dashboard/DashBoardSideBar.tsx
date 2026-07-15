@@ -19,7 +19,6 @@ import { toast } from "sonner";
 
 const dashboardItems = [
   { name: "Overview", icon: <FiPieChart />, href: "/dashboard" },
-  { name: "Add Items", icon: <FiPlusCircle />, href: "/dashboard/add-items" },
   { name: "Manage Items", icon: <FiActivity />, href: "/dashboard/manage-items" },
 ];
   
