@@ -48,8 +48,7 @@ const AddItemPage = () => {
     imageUrl = uploadedImage.url;
   }
 
-  const uploadedImage = await imgUpload(imageFile);
-console.log("Uploaded image response:", uploadedImage);
+
 
   const exploreData = {
     ...values,
@@ -57,7 +56,7 @@ console.log("Uploaded image response:", uploadedImage);
   };
 
   const result = await createExploreItems(exploreData);
-  console.log(result);
+
 };
 
   const inputStyle = `rounded-xl border border-slate-200 bg-white text-slate-900 w-full shadow-none mt-1 focus:border-[#4f46e5] focus:ring-0 focus:outline-none transition-colors autofill:shadow-[0_0_0_30px_#ffffff_inset] [-webkit-text-fill-color:slate-900]`;
@@ -253,10 +252,11 @@ console.log("Uploaded image response:", uploadedImage);
             </Label>
             <div className="relative flex items-center">
               <FiImage className="absolute left-3.5 text-slate-400 z-20" size={18} />
-              <Input
+              <input
                 type="file"
-                className={`${inputStyle} pl-10 `}
-                accept="image/*"
+                name='image'
+                className={`${inputStyle} pl-10 p-3 `}
+                
               />
             </div>
             <Description className="text-xs text-slate-400 mt-1">
