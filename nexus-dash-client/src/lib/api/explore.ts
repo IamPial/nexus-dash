@@ -18,10 +18,28 @@ export interface ExploreItem {
 
 
 //get all explore items
-//get all explore items
-export const getAllExploreItems = async (options?: { limit?: number }): Promise<ExploreItem[]> => {
-  const query = options?.limit ? `?limit=${options.limit}` : "";
-  const res = await fetch(`${baseURl}/api/explore${query}`);
+interface ExploreQueryParams {
+  limit?: number;
+  search?: string;
+  category?: string;
+  sortBy?: string;
+  priceLow?: number;
+  priceHigh?: number;
+}
+
+export const getAllExploreItems = async (
+  options?: ExploreQueryParams
+): Promise<ExploreItem[]> => {
+  const params = new URLSearchParams();
+  if (options?.limit) params.set("limit", String(options.limit));
+  if (options?.search) params.set("search", options.search);
+  if (options?.category) params.set("category", options.category);
+  if (options?.sortBy) params.set("sortBy", options.sortBy);
+  if (options?.priceLow) params.set("priceLow", String(options.priceLow));
+  if (options?.priceHigh) params.set("priceHigh", String(options.priceHigh));
+
+  const query = params.toString() ? `?${params.toString()}` : "";
+  const res = await fetch(`${baseURl}/api/explore${query}`, { cache: "no-store" });
   const data = await res.json();
   return data;
 };

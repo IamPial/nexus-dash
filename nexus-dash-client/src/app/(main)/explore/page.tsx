@@ -6,7 +6,11 @@ import {
   ListBox 
 } from "@heroui/react";
 import TravelCard from "@/components/TravelCard";
+import ExploreFilters from "@/components/ExploreFilters";
 
+interface ExplorePageProps {
+  searchParams: Promise<{ search?: string; category?: string; sortBy?: string }>;
+}
 
 export const metadata= {
   title: "Explore Destination",
@@ -15,8 +19,11 @@ export const metadata= {
 };
 
 
-const ExplorePage = async () => {
- const exploreData = await getAllExploreItems()
+const ExplorePage = async ({ searchParams }: ExplorePageProps) => {
+
+    const { search, category, sortBy } = await searchParams;
+  const exploreData = await getAllExploreItems({ search, category, sortBy });
+
 
   return (
     <div className="bg-slate-50 min-h-screen text-slate-900 py-10 px-4 md:px-8 lg:px-12">
@@ -34,7 +41,7 @@ const ExplorePage = async () => {
 
     
         <div className="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-end">
+          {/* <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-end">
             
        
             <div className="md:col-span-5 space-y-1.5">
@@ -120,7 +127,8 @@ const ExplorePage = async () => {
                 <option>Featured</option>
               </select>
             </div>
-          </div>
+          </div> */}
+          <ExploreFilters/>
         </div>
 
 

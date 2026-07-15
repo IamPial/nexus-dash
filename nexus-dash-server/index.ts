@@ -91,12 +91,33 @@ async function run() {
 
 
     //Explore related API
-    app.get('/api/explore', async (req: Request, res: Response) => {
-       const limit = req.query.limit ? parseInt(req.query.limit as string) : 0;
-        const result = await exploreCollection.find().limit(Number(limit)).toArray();
-        res.json(result); 
-    });
+  app.get('/api/explore', async (req: Request, res: Response) => {
+   const limit = req.query.limit ? parseInt(req.query.limit as string) : 0;
+   const { search, priceHigh, priceLow, category, sortBy } = req.query;
 
+   let query: Record<string, any> = {};
+
+   if (search && search !== 'undefined') {
+     query.title = { $regex: search as string, $options: "i" };
+   }
+
+   if (category && category !== 'undefined') {
+     query.category = category as string;
+   }
+
+
+   let sortOption: Record<string, 1 | -1> = {};
+   if (sortBy === 'priceAsc') sortOption = { price: 1 };
+   else if (sortBy === 'priceDesc') sortOption = { price: -1 };
+   else if (sortBy === 'newest') sortOption = { _id: -1 };
+
+   let cursor = exploreCollection.find(query);
+   if (Object.keys(sortOption).length) cursor = cursor.sort(sortOption);
+   if (Number(limit)) cursor = cursor.limit(Number(limit));
+
+   const result = await cursor.toArray();
+   res.json(result);
+});
 
     app.get("/api/explore/my-items", verifyToken, async (req, res) => {
       const userId = req.user?.id;
