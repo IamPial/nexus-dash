@@ -49,7 +49,6 @@ const AddItemPage = () => {
   }
 
 
-
   const exploreData = {
     ...values,
     image: imageUrl,
