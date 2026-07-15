@@ -72,6 +72,9 @@ const  Navbar =()=> {
             <NavLink href="/explore" className="font-medium text-white">Explore</NavLink>
           </li>
           <li>
+            <NavLink href="/add-items" className="font-medium text-white">Add Items</NavLink>
+          </li>
+          <li>
             <NavLink href="/about" className="font-medium text-white">About</NavLink>
           </li>
           <li>
@@ -160,7 +163,10 @@ const  Navbar =()=> {
               <NavLink href="/explore" onClick={() => setIsMenuOpen(false)} className="font-medium text-white">Explore</NavLink>
             </li>
             <li>
-              <NavLink href="/about"  onClick={() => setIsMenuOpen(false)} className="font-medium text-white">About</NavLink>
+              <NavLink href="/add-items"  onClick={() => setIsMenuOpen(false)} className="font-medium text-white">Add Items</NavLink>
+            </li>
+            <li>
+              <NavLink  href="/contact"  onClick={() => setIsMenuOpen(false)} className="font-medium text-white">Contact</NavLink>
             </li>
             <li>
               <NavLink  href="/contact"  onClick={() => setIsMenuOpen(false)} className="font-medium text-white">Contact</NavLink>
