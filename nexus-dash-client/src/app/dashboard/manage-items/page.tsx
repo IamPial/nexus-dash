@@ -9,6 +9,7 @@ import ItemsTable from "@/components/ItemsTable";
 const ManageItemsPage = async () => {
   const filteredItems = await getDestinations();
 
+
   return (
     <div className="p-4">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-4">
@@ -23,13 +24,13 @@ const ManageItemsPage = async () => {
         </Link>
       </div>
 
-      <div className="bg-white border border-slate-200/60 rounded-2xl shadow-xl overflow-hidden">
+      <div className="bg-white border border-slate-200/60 rounded-2xl shadow-lg overflow-hidden">
         <ItemsTable items={filteredItems} />
 
-        <div className="block md:hidden p-4 space-y-4">
+        <div className="block  p-4 space-y-4">
           {filteredItems.length === 0 ? (
-            <div className="text-center py-8 text-sm text-slate-400">No items found.</div>
-          ) : (
+            <div className="text-center py-8 text-sm text-[#0f172a] md:text-4xl font-bold">You haven&apos;t created any destinations!</div>
+          ) : ( 
             filteredItems.map((item: ExploreItem) => (
               <div key={item._id} className="border border-slate-100 rounded-xl p-4 flex flex-col gap-3 shadow-sm bg-white">
                 <div className="flex gap-3">
@@ -61,6 +62,7 @@ const ManageItemsPage = async () => {
               </div>
             ))
           )}
+          
         </div>
       </div>
     </div>

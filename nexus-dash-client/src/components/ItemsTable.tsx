@@ -15,7 +15,7 @@ const ItemsTable = ({ items }: { items: ExploreItem[] }) => {
         <Table.ScrollContainer>
           <Table.Content aria-label="Items Management Table" className="min-w-full">
             <Table.Header>
-              <Table.Column className="text-slate-500 font-bold uppercase tracking-wider text-xs py-4 pl-6">
+              <Table.Column isRowHeader className="text-slate-500 font-bold uppercase tracking-wider text-xs py-4 pl-6">
                 Item Info
               </Table.Column>
               <Table.Column className="text-slate-500 font-bold uppercase tracking-wider text-xs py-4">
