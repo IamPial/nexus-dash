@@ -1,10 +1,4 @@
-import { FiSearch } from "react-icons/fi";
 import { getAllExploreItems, type ExploreItem } from "@/lib/api/explore";
-import { 
-  Select, 
-  Label, 
-  ListBox 
-} from "@heroui/react";
 import TravelCard from "@/components/TravelCard";
 import ExploreFilters from "@/components/ExploreFilters";
 
