@@ -23,7 +23,7 @@ Designed with scalability, performance, and clean UI/UX principles in mind, Nexu
 
 #  Key Features
 
-### 🏝 Premium Travel Experiences
+###  Premium Travel Experiences
 
 - Explore curated luxury destinations
 - Beautiful travel cards with pricing, ratings, and locations
@@ -259,26 +259,16 @@ CLIENT_URL=
 
 ---
 
-# 📸 Screenshots
+#  Screenshots
 
 ### Home Page
 
-<img src="./preview/home.png"/>
+<img src="./src/assets/home.png" width="48%">
 
 ---
 
-# 👨‍💻 Author
+#  Author
 
 ###  Pial
 
-Full Stack Developer
-
-- Portfolio
-- LinkedIn
-- GitHub
-
 ---
-
-# ⭐ If you like this project
-
-Give it a ⭐ on GitHub.
