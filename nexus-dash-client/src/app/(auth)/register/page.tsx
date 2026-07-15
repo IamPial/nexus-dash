@@ -62,7 +62,7 @@ const SignUpPage = () => {
 
     if (data) {
       await authClient.signOut();
-      toast("Registration successful!", {
+      toast.success("Registration successful!", {
         style: {
           color: "#00c950",
         },
