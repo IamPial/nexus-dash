@@ -6,9 +6,9 @@ interface ExploreItems {
   title: string;
   description: string
   price: string,
-  date:string,
   image?: string;
   location: string,
+  duration:string
   category: string
 }
 
