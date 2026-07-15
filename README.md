@@ -5,7 +5,7 @@
 
 Discover curated luxury destinations, book unforgettable experiences, and explore the world's finest travel opportunities—all from one modern platform.
 
-🔗 **Live Demo:** [https://your-live-link.vercel.app](https://nexus-dash-travel.vercel.app/)
+🔗 **Live Demo:** https://nexus-dash-travel.vercel.app
 
 </div>
 
