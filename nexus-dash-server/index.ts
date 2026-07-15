@@ -92,7 +92,8 @@ async function run() {
 
     //Explore related API
     app.get('/api/explore', async (req: Request, res: Response) => {
-        const result = await exploreCollection.find().toArray();
+       const limit = req.query.limit ? parseInt(req.query.limit as string) : 0;
+        const result = await exploreCollection.find().limit(Number(limit)).toArray();
         res.json(result); 
     });
 
@@ -100,6 +101,14 @@ async function run() {
       const addItems = req.body
       const result = await exploreCollection.insertOne(addItems)
       res.json(result)
+    })
+
+    app.get('/api/explore/:id', async(req: Request<{ id: string }>, res: Response)=>{
+      const {id} = req.params
+      const result = await exploreCollection.findOne({
+        _id: new ObjectId(id)
+      })
+      res.send(result)
     })
 
 
